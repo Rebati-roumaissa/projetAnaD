@@ -1,18 +1,14 @@
 myarray=load('/home/newpc/Downloads/students_etudiants/students_etudiants/bilan_X.txt');
 [numRows, numCols] = size(myarray);
 %remplacement de mauvaises valeurs
-k=1;
-i=1;
-while k < numRows +1
-
     for j=1:numCols
         moyenneCol = mean(myarray(:,j));
-        if myarray(k,j) == -1
+        for k=1:numRows
+           if myarray(k,j) == -1
                myarray(k,j)=moyenneCol;
+           end
         end
     end
-    k=k+1;
-end
 X=myarray;
 [numRowsX, numColsX] = size(X);
 % standardisation de la matrice
