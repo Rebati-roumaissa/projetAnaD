@@ -13,25 +13,27 @@ while k < numRows +1
     end
     i=i+1;
     k=k+1;
-end
-X=myarray
-[numRowsX, numColsX] = size(X)
+end;
+X=myarray;
+[numRowsX, numColsX] = size(X);
 % standardisation de la matrice
-Xc=X-mean(X)
-Xs = Xc./repmat(std(X),numRowsX,1)
+Xc=X-mean(X);
+Xs = Xc./repmat(std(X),numRowsX,1);
 %matrice variancecovariance
-V=Xs'*Xs/numRowsX-1
+V=Xs'*Xs/numRowsX-1;
 % valeurs propres et vecteurs propres
-[E,D]=eig(V)
-[d,ind] = sort(diag(D),'descend')
+[E,D]=eig(V);
+[d,ind] = sort(diag(D),'descend');
 Ds = D(ind,ind);
 Vs = V(:,ind);
 %Matrice de projection
-P=Xs*E*Ds^(-1/2)
+P=Xs*E*Ds^(-1/2);
 %plot sur les deux premiers axes principaux
-x=P(:,1)
-y1=P(:,2)
+x=P(:,1);
+y1=P(:,2);
 plot(x,y1,'.')
+set(gca, "xaxislocation", "zero");
+set(gca, "yaxislocation", "zero");
 title('{\bf PCA}');
 xlabel('PC 1');
-ylabel('PC 2')
+ylabel('PC 2');
